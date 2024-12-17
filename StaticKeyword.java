@@ -17,7 +17,6 @@ class StaticKeyword{
         StaticKeyword s1=new StaticKeyword();
         StaticKeyword s2=new StaticKeyword();
         StaticKeyword s3=new StaticKeyword();
-        
         StaticKeyword.showcount();
     }
 }

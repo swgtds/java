@@ -30,7 +30,7 @@ class Student {
     }
 }
 
-public class StudentException {
+class StudentException {
     public static void main(String[] args) {
         try {
             Student student = new Student(1, "John", 25, "Computer Science");

@@ -21,7 +21,7 @@ class Multiple implements Printable, Showable{
 
 }
 
-public class MultipleInheritance {
+class MultipleInheritance {
     public static void main(String args[]) {
         Multiple obj = new Multiple();
 

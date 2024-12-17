@@ -1,4 +1,4 @@
-public class NestedTryCatch {
+class NestedTryCatch {
     public static void main(String[] args) {
         try {
             try {

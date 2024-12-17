@@ -1,32 +1,677 @@
 1.Write a java program to reverse an array.
+
+//Program to reverse 1D array
+import java.util.Scanner;
+class ReverseArray{
+    public static void main(String args[]){
+        System.out.println("Enter array size:");
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+
+        //Array input
+        System.out.println("Enter array elements:");
+        for(int i=0;i<arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+
+        //Before reverse
+        System.out.println("Before Reverse:");
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+
+        //After reverse 
+        System.out.println("After Reverse:");
+        for(int i=arr.length-1;i>=0;i--){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+
 2. Write a program in Java to sort numbers in ascending or descending order given by user.
-3. Design a class Named Circle. Construct three circle objects with radius 2.0,12,24 and
-displays the radius and area of each. A no-arg constructor set the default value of radius
-to 1.AgetArea() method is used to return the area of the circle. Now implement the class
+
+//program to sort numbers in both ascending and descending
+import java.util.Arrays;
+import java.util.Scanner;
+class SortNumbers{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter no. of numbers  to sort:");
+        int size=sc.nextInt();
+
+        //array input
+        int numbers[]= new int[size];
+        System.out.println("Enter numbers to sort:");
+        for(int i=0;i<numbers.length;i++){
+            numbers[i]=sc.nextInt();
+        }
+
+        //sorting numbers
+        System.out.println("enter 1 for Ascending or 2 for descending?:");
+        int choice =sc.nextInt();
+        if(choice==1){
+            Arrays.sort(numbers);;
+            System.out.println("sorted numbers in ascending:");
+            for(int i=0;i<numbers.length;i++){
+                System.out.print(numbers[i]+" ");
+            }
+        }
+
+        else if (choice==2){
+            Arrays.sort(numbers);
+            System.out.println("sorted numbers in descending order:");
+            for(int i=numbers.length-1;i>=0;i--){
+                System.out.print(numbers[i]+" ");
+            }
+        }
+
+        else{
+            System.out.println("Invalid");
+
+        }
+
+    }
+} 
+
+
+3. Design a class Named Circle. Construct three circle objects with radius 2.0,12,24 and displays the radius and area of each. A no-arg constructor set the default value of radius to 1.AgetArea() method is used to return the area of the circle. Now implement the class
+
+//class cicle and create objects for that 
+class Circle1{
+    private double radius;
+
+    //no arg constructor
+    public Circle1() {
+        radius = 1.0;
+    }
+
+    //parameterised constructor
+    public Circle1(double radius){
+        this.radius=radius;
+    }
+
+    //radius method 
+    public double getRadius(){
+        return radius;
+    }
+
+    //area method
+    public double getArea(){
+        return Math.PI*radius*radius;
+    }
+}
+
+class Circle{
+    public static void main(String args[]){
+        Circle1 c1=new Circle1(2.0);
+        Circle1 c2=new Circle1(12);
+        Circle1 c3=new Circle1(24);
+
+        System.out.println("Circle  c1 with Radius: "+c1.getRadius()+" has Area of "+c1.getArea());
+        System.out.println("Circle  c2 with Radius: "+c2.getRadius()+" has Area of "+c2.getArea());
+        System.out.println("Circle  c3 with Radius: "+c3.getRadius()+" has Area of "+c3.getArea());
+    }
+}
+
+
+
+
 4.Write a program in Java to implement throws and throws exception.
-5. Write a Java program to implement the concept of importing classes from user defined
-package and creating packages.
+
+class ThrowAndThrows{
+    public static void AgeCheck(int age) throws Exception{
+        if(age<18){
+            throw new Exception("You are not eligible ");
+        }
+        
+        System.out.println("You are eligible ");
+    }
+    public static void main(String args[]){
+        try{
+            AgeCheck(15);
+            //AgeCheck(20);
+        }
+        catch (Exception e){
+            System.out.println("Exception caught "+e.getMessage());
+        }
+    }
+}
+
+
+5. Write a Java program to implement the concept of importing classes from user defined package and creating packages.
+
+import mypackage.MyClass; 
+
+class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        
+        
+        obj.displayMessage();
+    }
+}
+
+package mypackage;
+
+public class MyClass{
+    public void displayMessage(){
+        System.out.println("MyClass from mypackage");
+    }
+}
+
+
 6. Write a program to demonstrate the chained exception in Java.
+
+// Java program to demonstrate working of chained exceptions 
+class ChainedExceptionHandling 
+{ 
+	public static void main(String[] args) 
+	{ 
+		try
+		{ 
+			// Creating an exception 
+			NumberFormatException ex = 
+					new NumberFormatException("sreemoyee is an Exception"); 
+
+			// Setting a cause of the exception 
+			ex.initCause(new NullPointerException( 
+					"This is actual cause of the exception")); 
+
+			// Throwing an exception with cause. 
+			throw ex; 
+		} 
+
+		catch(NumberFormatException ex) 
+		{ 
+			// displaying the exception 
+			System.out.println(ex); 
+
+			// Getting the actual cause of the exception 
+			System.out.println(ex.getCause()); 
+		} 
+	} 
+} 
+
+
+
 7. Write a program in Java to show the examples of i)call by value and ii) call by reference.
+
+//Program to show call by value and call by reference
+class CallByValueAndCallByRef{
+    void callByValue(int num){
+        num += 10;
+        System.out.println("Inside callByValue method: "+num);
+        
+    }
+
+    void callByRef(int[] arr){
+        arr[0]+=10;
+        System.out.println("Inside callByRef method: "+arr[0]);
+    
+    }
+    public static void main(String[] args) {
+        CallByValueAndCallByRef call = new CallByValueAndCallByRef();
+        int number = 10;
+        System.out.println("Before callByValue: number:" + number);
+        call.callByValue(number);
+        System.out.println("Outside callByValue method: "+number);
+        int array[]={5};
+        System.out.println("Before callByRef: Array:" + array[0]);
+        call.callByRef(array);
+        System.out.println("Outside callByRef method: "+array[0]);
+    }
+}
+
+
 8. Write a Java program to implement hierarchical inheritance.
+
+//Hierarchical inheritance 
+
+class Animal{
+    void eat(){
+        System.out.println("eating...");
+    }
+}
+class Dog extends Animal{
+    void bark(){
+        System.out.println("barking...");
+    }
+}
+class Cat extends Animal{
+    void meow(){
+        System.out.println("meowing...");
+    }
+}
+class HierarchicalInheritance{
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();
+        d.bark();
+        Cat c = new Cat();
+        c.eat();
+        c.meow();
+    }
+}
+
+
+
 9. Write a program in Java to show the application of multiple inheritance.
+
+//Program to show multiple inheritance in java
+interface Printable {
+    // Abstract methods
+    void print();
+}
+
+interface Showable {
+    void show();
+}
+
+class Multiple implements Printable, Showable{
+    @Override
+    public void print() {
+        System.out.println("The text is printed.");
+    }
+
+    @Override
+    public void show() {
+        System.out.println("The text is shown.");
+    }
+
+}
+
+class MultipleInheritance {
+    public static void main(String args[]) {
+        Multiple obj = new Multiple();
+
+    
+        obj.print();
+        obj.show();
+    }
+}
+
+
+
 10. Write a program in Java to show the application of the ‘static’ keyword in Java.
+
+//program to show the use of static keyword
+
+class StaticKeyword{
+    //Static varibale
+    static int count=0;
+
+    StaticKeyword(){
+        count++;
+    }
+    //static method 
+    static void showcount(){
+        System.out.println("Count is "+count);
+    }
+
+    public static void main(String[] args) {
+
+        StaticKeyword s1=new StaticKeyword();
+        StaticKeyword s2=new StaticKeyword();
+        StaticKeyword s3=new StaticKeyword();
+        StaticKeyword.showcount();
+    }
+}
+
+
 11. Write a program in Java to override a base class method into a derived class.
+
+class BaseClass {
+    void display() {
+        System.out.println("Base Class Method");
+    }
+}
+
+class DerivedClass extends BaseClass {
+    @Override
+    void display() {
+        System.out.println("Derived Class Method");
+    }
+}
+
+class OverrideExample {
+    public static void main(String[] args) {
+        BaseClass obj = new DerivedClass();
+        obj.display();
+    }
+}
+
+
+
 12. Write a Program in Java to call a super class constructor from sub/child class.
-13. Create a class Student with attributes roll no, name, age and course. Initialize values
-through parameterized constructor. If age of student is not in between 15 and 21 then
-generate user-defined exception "AgeNotWithinRangeException". If name contains
-numbers or special symbols raise exception "NameNotValidException". Define the two
-exception classes.
-14. Write a Java program using Applet to display a message in the Applet.
-15. Write a program in java to create a nested try-catch block, where you have to display two
-different types of exception.
+
+class Animal {
+    Animal() {
+        System.out.println("Animal Constructor Called");
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        super();  // Calling the superclass constructor
+        System.out.println("Dog Constructor Called");
+    }
+}
+
+class CallSuperClassConstructor {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+    }
+}
+
+
+
+
+13. Create a class Student with attributes roll no, name, age and course. Initialize values through parameterized constructor. If age of student is not in between 15 and 21 then generate user-defined exception "AgeNotWithinRangeException". If name contains numbers or special symbols raise exception "NameNotValidException". Define the two exception classes.
+
+class AgeNotWithinRangeException extends Exception {
+    public AgeNotWithinRangeException(String message) {
+        super(message);
+    }
+}
+
+class NameNotValidException extends Exception {
+    public NameNotValidException(String message) {
+        super(message);
+    }
+}
+
+class Student {
+    int rollNo;
+    String name;
+    int age;
+    String course;
+
+    Student(int rollNo, String name, int age, String course) throws AgeNotWithinRangeException, NameNotValidException {
+        if (age < 15 || age > 21) {
+            throw new AgeNotWithinRangeException("Age is not within the valid range (15-21).");
+        }
+        if (!name.matches("[a-zA-Z]+")) {
+            throw new NameNotValidException("Name contains invalid characters.");
+        }
+        this.rollNo = rollNo;
+        this.name = name;
+        this.age = age;
+        this.course = course;
+    }
+}
+
+class StudentException {
+    public static void main(String[] args) {
+        try {
+            Student student = new Student(1, "John", 25, "Computer Science");
+        } catch (AgeNotWithinRangeException | NameNotValidException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+
+
+
+14. Write a Java program using Applet to display a message in the Applet.(Swing)
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+class MessageApp {
+    public static void main(String[] args) {
+        // Create a JFrame to hold the message
+        JFrame frame = new JFrame("Message Window");
+
+        // Create a JLabel with the message
+        JLabel label = new JLabel("Hello, this is a Swing application!", JLabel.CENTER);
+
+        // Add the label to the frame
+        frame.add(label);
+
+        // Set the frame properties
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+}
+
+
+
+
+15. Write a program in java to create a nested try-catch block, where you have to display two different types of exception.
+
+class NestedTryCatch {
+    public static void main(String[] args) {
+        try {
+            try {
+                int result = 10 / 0;  // Arithmetic Exception
+            } catch (ArithmeticException e) {
+                System.out.println("Caught Arithmetic Exception: " + e);
+            }
+            String str = null;
+            System.out.println(str.length());  // NullPointerException
+        } catch (NullPointerException e) {
+            System.out.println("Caught NullPointer Exception: " + e);
+        }
+    }
+}
+
+
+
 16. Write a program in Java to create a new thread and start it running.
-17. Write a Java program to implement a copy constructor to create a new object by copying
-another object's state.
+
+class MyThread extends Thread{
+    @Override
+    public void run(){
+        System.out.println("Thread is running...");
+    }
+}
+
+class ThreadExample{
+    public static void main(String args[]){
+        MyThread thread=new MyThread();
+        thread.start();
+        System.out.println("Main Thread is running...");
+
+    }
+} 
+
+
+17. Write a Java program to implement a copy constructor to create a new object by copying another object's state.
+
+class Student {
+    int rollNo;
+    String name;
+    int age;
+
+    // Default constructor
+    Student(int rollNo, String name, int age) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.age = age;
+    }
+
+    // Copy constructor
+    Student(Student other) {
+        this.rollNo = other.rollNo;
+        this.name = other.name;
+        this.age = other.age;
+    }
+
+    // Display method to show object data
+    void display() {
+        System.out.println("Roll No: " + rollNo);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+class CopyConstructorDemo {
+    public static void main(String[] args) {
+        // Creating the first object
+        Student student1 = new Student(1, "John Doe", 20);
+        System.out.println("Original Object (student1):");
+        student1.display();
+
+        // Creating the second object using the copy constructor
+        Student student2 = new Student(student1);
+        System.out.println("\nCopied Object (student2):");
+        student2.display();
+
+        // Modifying the original object to show that the copied object is independent
+        student1.name = "Jane Doe";
+        student1.age = 21;
+
+        System.out.println("\nAfter Modifying Original Object (student1):");
+        student1.display();
+
+        System.out.println("\nCopied Object (student2) Remains Unchanged:");
+        student2.display();
+    }
+}
+
+
 18. Create a class Rectangle with data members length, breadth and height. Use a
 parameterised constructor to initialize the object. With the help of function surface
 area() and volume(), calculate and display the surface area and volume of the
 rectangle.
+
+class Rectangle {
+    // Data members
+    private double length;
+    private double breadth;
+    private double height;
+
+    // Parameterized constructor
+    public Rectangle(double length, double breadth, double height) {
+        this.length = length;
+        this.breadth = breadth;
+        this.height = height;
+    }
+
+    // Function to calculate surface area
+    public double surfaceArea() {
+        return 2 * (length * breadth + breadth * height + height * length);
+    }
+
+    // Function to calculate volume
+    public double volume() {
+        return length * breadth * height;
+    }
+
+    // Function to display the surface area and volume
+    public void display() {
+        System.out.println("Length: " + length);
+        System.out.println("Breadth: " + breadth);
+        System.out.println("Height: " + height);
+        System.out.println("Surface Area: " + surfaceArea());
+        System.out.println("Volume: " + volume());
+    }
+}
+
+class RectangleDemo {
+    public static void main(String[] args) {
+        // Creating a Rectangle object using the parameterized constructor
+        Rectangle rectangle = new Rectangle(5.0, 3.0, 2.0);
+
+        // Displaying surface area and volume
+        System.out.println("Details of the Rectangle:");
+        rectangle.display();
+    }
+}
+
+
+
 19. Write a Java Program to Compute the Sum of Diagonals of a Matrix
+
+import java.util.Scanner;
+
+class DiagonalSum {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of the matrix (n x n): ");
+        int n = sc.nextInt();
+        int[][] matrix = new int[n][n];
+        
+        System.out.println("Enter the matrix elements:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        
+        int diagonalSum = 0;
+        for (int i = 0; i < n; i++) {
+            diagonalSum += matrix[i][i]; // Primary diagonal
+            diagonalSum += matrix[i][n - i - 1]; // Secondary diagonal
+        }
+        
+        // If the matrix has an odd size, subtract the center element as it's counted twice
+        if (n % 2 != 0) {
+            diagonalSum -= matrix[n / 2][n / 2];
+        }
+
+        System.out.println("Sum of both diagonals: " + diagonalSum);
+        sc.close();
+    }
+}
+
+
+
 20. Write a program in java to find transpose of a matix.
+
+import java.util.Scanner;
+
+class MatrixTranspose {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input: Matrix dimensions
+        System.out.print("Enter the number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter the number of columns: ");
+        int columns = sc.nextInt();
+
+        int[][] matrix = new int[rows][columns];
+        int[][] transpose = new int[columns][rows]; // Transpose matrix has flipped dimensions
+
+        // Input: Matrix elements
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Compute the transpose
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                transpose[j][i] = matrix[i][j];
+            }
+        }
+
+        // Output: Original matrix
+        System.out.println("\nOriginal Matrix:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // Output: Transpose matrix
+        System.out.println("\nTranspose of the Matrix:");
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < rows; j++) {
+                System.out.print(transpose[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
