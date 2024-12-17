@@ -1,0 +1,32 @@
+1.Write a java program to reverse an array.
+2. Write a program in Java to sort numbers in ascending or descending order given by user.
+3. Design a class Named Circle. Construct three circle objects with radius 2.0,12,24 and
+displays the radius and area of each. A no-arg constructor set the default value of radius
+to 1.AgetArea() method is used to return the area of the circle. Now implement the class
+4.Write a program in Java to implement throws and throws exception.
+5. Write a Java program to implement the concept of importing classes from user defined
+package and creating packages.
+6. Write a program to demonstrate the chained exception in Java.
+7. Write a program in Java to show the examples of i)call by value and ii) call by reference.
+8. Write a Java program to implement hierarchical inheritance.
+9. Write a program in Java to show the application of multiple inheritance.
+10. Write a program in Java to show the application of the ‘static’ keyword in Java.
+11. Write a program in Java to override a base class method into a derived class.
+12. Write a Program in Java to call a super class constructor from sub/child class.
+13. Create a class Student with attributes roll no, name, age and course. Initialize values
+through parameterized constructor. If age of student is not in between 15 and 21 then
+generate user-defined exception "AgeNotWithinRangeException". If name contains
+numbers or special symbols raise exception "NameNotValidException". Define the two
+exception classes.
+14. Write a Java program using Applet to display a message in the Applet.
+15. Write a program in java to create a nested try-catch block, where you have to display two
+different types of exception.
+16. Write a program in Java to create a new thread and start it running.
+17. Write a Java program to implement a copy constructor to create a new object by copying
+another object's state.
+18. Create a class Rectangle with data members length, breadth and height. Use a
+parameterised constructor to initialize the object. With the help of function surface
+area() and volume(), calculate and display the surface area and volume of the
+rectangle.
+19. Write a Java Program to Compute the Sum of Diagonals of a Matrix
+20. Write a program in java to find transpose of a matix.
